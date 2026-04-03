@@ -6,6 +6,13 @@ import Link from "next/link";
 import * as motion from "framer-motion/client";
 import { slideUp, cinematicReveal, fadeIn } from "@/lib/motion";
 
+const showcases = [
+  { slug: "aura-interiors", title: "Aura Interiors", category: "Interior Design", year: "2024" },
+  { slug: "coolfix-web", title: "CoolFix Web", category: "Technology", year: "2024" },
+  { slug: "ironpeak", title: "Iron Peak", category: "Fitness", year: "2024" },
+  { slug: "kallakuri-kitchen", title: "Kallakuri Kitchen", category: "Food & Beverage", year: "2024" },
+];
+
 export default function Home() {
   return (
     <>
@@ -101,26 +108,26 @@ export default function Home() {
               Selected Work
             </motion.p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-              {[1, 2, 3, 4].map((i) => (
+              {showcases.map((showcase) => (
                 <Link
-                  key={i}
-                  href="/portfolio"
+                  key={showcase.slug}
+                  href={`/portfolio/${showcase.slug}`}
                   className="block"
                 >
                   <motion.div
                     variants={cinematicReveal}
-                    className="bg-surface border border-outline/20 aspect-[4/3] flex items-center justify-center group hover:bg-surface-container transition-colors duration-500 overflow-hidden"
+                    className="bg-surface border border-outline/20 aspect-[4/3] flex items-center justify-center group hover:bg-surface-container hover:border-primary/40 transition-all duration-500 overflow-hidden"
                   >
                     <motion.div 
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                       className="text-center"
                     >
-                      <p className="font-display text-2xl md:text-3xl uppercase tracking-tighter">
-                        Project {i}
+                      <p className="text-xs uppercase tracking-widest text-on-surface/50 mb-2">
+                        {showcase.category} — {showcase.year}
                       </p>
-                      <p className="text-sm text-on-surface/50 mt-2 uppercase tracking-wider">
-                        {i % 2 === 0 ? "E-Commerce" : "Corporate"}
+                      <p className="font-display text-2xl md:text-3xl uppercase tracking-tighter group-hover:text-primary transition-colors duration-300">
+                        {showcase.title}
                       </p>
                     </motion.div>
                   </motion.div>

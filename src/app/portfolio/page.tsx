@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,12 +9,11 @@ export const metadata: Metadata = {
 };
 
 const projects = [
-  { title: "Aurora Finance", category: "E-Commerce", year: "2024" },
-  { title: "Monolith Studios", category: "Corporate", year: "2024" },
-  { title: "Chennai Gallery", category: "Cultural", year: "2024" },
-  { title: "Vertex Labs", category: "SaaS", year: "2023" },
-  { title: "Terraform Co", category: "E-Commerce", year: "2023" },
-  { title: "Pulse Health", category: "Healthcare", year: "2023" },
+  { slug: "aura-interiors", title: "Aura Interiors", category: "Interior Design", year: "2024" },
+  { slug: "coolfix-web", title: "CoolFix Web", category: "Technology", year: "2024" },
+  { slug: "ironpeak", title: "Iron Peak", category: "Fitness", year: "2024" },
+  { slug: "kallakuri-kitchen", title: "Kallakuri Kitchen", category: "Food & Beverage", year: "2024" },
+  { slug: "smilecare", title: "SmileCare", category: "Healthcare", year: "2024" },
 ];
 
 export default function PortfolioPage() {
@@ -37,19 +37,20 @@ export default function PortfolioPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {projects.map((project) => (
-                <div
-                  key={project.title}
-                  className="bg-surface border border-outline/20 aspect-[4/3] flex items-center justify-center group hover:bg-surface-container transition-colors duration-500"
+                <Link
+                  key={project.slug}
+                  href={`/portfolio/${project.slug}`}
+                  className="bg-surface border border-outline/20 aspect-[4/3] flex items-center justify-center group hover:bg-surface-container hover:border-primary/40 transition-all duration-500"
                 >
                   <div className="text-center px-8">
                     <p className="text-xs uppercase tracking-widest text-on-surface/50 mb-2">
                       {project.category} — {project.year}
                     </p>
-                    <h2 className="font-display text-2xl md:text-3xl lg:text-4xl uppercase tracking-tighter">
+                    <h2 className="font-display text-2xl md:text-3xl lg:text-4xl uppercase tracking-tighter group-hover:text-primary transition-colors duration-300">
                       {project.title}
                     </h2>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

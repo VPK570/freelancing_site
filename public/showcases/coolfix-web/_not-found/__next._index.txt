@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[7121,[],""]
+3:I[4581,[],""]
+:HL["/showcases/coolfix-web/_next/static/css/f256f4a09c7a45e9.css","style"]
+0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/showcases/coolfix-web/_next/static/css/f256f4a09c7a45e9.css","precedence":"next"}]],["$","html",null,{"lang":"en","className":"__variable_987a98 __variable_57517c antialiased","children":["$","body",null,{"className":"min-h-screen font-body bg-surface text-on-surface","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"xAlgk9UpK5fjfIZ54Kr5A"}

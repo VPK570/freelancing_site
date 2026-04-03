@@ -1,0 +1,3 @@
+:HL["/showcases/kallakuri-kitchen/_next/static/css/14aaa100b7e74946.css","style"]
+:HL["/showcases/kallakuri-kitchen/_next/static/css/e4112c59704e01e3.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"blCvA2njBgO2URpl58pju"}
