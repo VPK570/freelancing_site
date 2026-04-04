@@ -24,7 +24,7 @@ export function ThemeToggle() {
       aria-label="Toggle Theme"
     >
       <span className="sr-only">Toggle theme</span>
-      
+
       {/* Background glow on hover */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-primary/5 blur-md transition-opacity duration-500" />
 

@@ -55,11 +55,10 @@ export default function Navigation({ logo = "STUDIO" }: NavigationProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm uppercase tracking-wider transition-colors duration-300 ${
-                    isActive
-                      ? "text-primary border-b border-primary"
-                      : "text-on-surface hover:text-primary"
-                  }`}
+                  className={`text-sm uppercase tracking-wider transition-colors duration-300 ${isActive
+                    ? "text-primary border-b border-primary"
+                    : "text-on-surface hover:text-primary"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -102,9 +101,8 @@ export default function Navigation({ logo = "STUDIO" }: NavigationProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`text-2xl font-display uppercase tracking-tight transition-colors duration-300 ${
-                    isActive ? "text-primary border-l-2 border-primary pl-4" : "text-on-surface"
-                  }`}
+                  className={`text-2xl font-display uppercase tracking-tight transition-colors duration-300 ${isActive ? "text-primary border-l-2 border-primary pl-4" : "text-on-surface"
+                    }`}
                 >
                   {link.label}
                 </Link>
