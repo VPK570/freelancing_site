@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 
@@ -22,15 +22,33 @@ export default function Navigation({ logo = "STUDIO" }: NavigationProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [menuOpen]);
+
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-outline/20">
-        <nav className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="font-display text-xl font-bold tracking-tight uppercase">
+        <nav className="max-w-[1920px] mx-auto px-4 sm:px-6 md:px-8 py-4 flex items-center justify-between relative">
+          <Link href="/" className="font-display text-xl font-bold tracking-tight uppercase relative z-20">
             {logo}
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
             {navLinks.map((link) => {
               const isActive = link.href === pathname || (link.href !== "/" && pathname?.startsWith(link.href));
               return (
@@ -49,11 +67,11 @@ export default function Navigation({ logo = "STUDIO" }: NavigationProps) {
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 relative z-20">
             <ThemeToggle />
             <Link
               href="/contact"
-              className="bg-primary text-white px-6 py-3 text-sm uppercase tracking-wider font-medium transition-all duration-300 hover:bg-transparent hover:text-primary border border-primary"
+              className="border border-outline/20 hover:border-primary px-5 py-2 text-on-surface hover:text-primary transition-colors text-xs uppercase tracking-widest font-medium"
             >
               Let&apos;s Talk
             </Link>
@@ -95,7 +113,7 @@ export default function Navigation({ logo = "STUDIO" }: NavigationProps) {
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="bg-primary text-white px-6 py-4 text-sm uppercase tracking-wider font-medium text-center mt-4"
+              className="border border-outline/20 px-6 py-4 text-on-surface hover:text-primary hover:border-primary transition-colors text-sm uppercase tracking-wider font-medium text-center mt-4"
             >
               Let&apos;s Talk
             </Link>

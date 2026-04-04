@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
+:root {
+  --bg-color: #F4F4F5;
+  --surf-color: #FFFFFF;
+  --surf-container-color: #FAFAFA;
+  --prim-color: #FF5E00;
+  --on-surf-color: #131315;
+  --out-color: #ab897d;
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #09090B;
+  --surf-color: #18181B;
+  --surf-container-color: #1C1C1F;
+  --prim-color: #FF5E00;
+  --on-surf-color: #FAFAFA;
+  --out-color: #5b4137;
+}
+
 @theme inline {
-  --color-background: #F4F4F5;
-  --color-surface: #FFFFFF;
-  --color-surface-container: #FAFAFA;
-  --color-primary: #FF5E00;
-  --color-on-surface: #131315;
-  --color-outline: #ab897d;
+  --color-background: var(--bg-color);
+  --color-surface: var(--surf-color);
+  --color-surface-container: var(--surf-container-color);
+  --color-primary: var(--prim-color);
+  --color-on-surface: var(--on-surf-color);
+  --color-outline: var(--out-color);
 
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-manrope);
 
   --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* This allows next-themes to apply dark mode variables without media queries locking it in */
-:root[data-theme="dark"] {
-  --color-background: #09090B;
-  --color-surface: #18181B;
-  --color-surface-container: #1C1C1F;
-  --color-on-surface: #FAFAFA;
-  --color-outline: #5b4137;
 }
 
 

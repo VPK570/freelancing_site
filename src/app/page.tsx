@@ -5,6 +5,15 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import * as motion from "framer-motion/client";
 import { slideUp, cinematicReveal, fadeIn } from "@/lib/motion";
+import Image from "next/image";
+import HeroGraphic from "@/components/HeroGraphic";
+
+const featuredProjects = [
+  { title: "Aurora Finance", category: "E-Commerce", year: "2024", image: "/images/projects/aurora_finance.png" },
+  { title: "Monolith Studios", category: "Corporate", year: "2024", image: "/images/projects/monolith_studios.png" },
+  { title: "Chennai Gallery", category: "Cultural", year: "2025", image: "/images/projects/chennai_gallery.png" },
+  { title: "Vertex Labs", category: "SaaS", year: "2023", image: "/images/projects/vertex_labs.png" },
+];
 
 export default function Home() {
   return (
@@ -15,32 +24,43 @@ export default function Home() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 pb-16"
+          className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 pb-16 border-b border-outline/20"
         >
-          <div className="max-w-[1920px] mx-auto w-full">
-            <motion.p 
-              variants={fadeIn}
-              className="text-xs uppercase tracking-widest text-on-surface/50 mb-6 md:mb-8"
-            >
-              Web Design & Development Studio
-            </motion.p>
-            <motion.h1
-              variants={slideUp}
-              className="font-display uppercase tracking-tighter leading-[0.85]"
-              style={{ fontSize: "clamp(2.5rem, 10vw, 10rem)" }}
-            >
-              WE BUILD
-              <br />
-              <span className="text-primary">DIGITAL</span>
-              <br />
-              MONUMENTS
-            </motion.h1>
+          <div className="max-w-[1920px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+              <motion.p 
+                variants={fadeIn}
+                className="text-xs uppercase tracking-widest text-on-surface/50 mb-6 md:mb-8"
+              >
+                Web Design & Development Studio
+              </motion.p>
+              <motion.h1
+                variants={slideUp}
+                className="font-display uppercase tracking-tighter leading-[0.85]"
+                style={{ fontSize: "clamp(2.5rem, 10vw, 10rem)" }}
+              >
+                WE BUILD
+                <br />
+                <span className="text-primary">DIGITAL</span>
+                <br />
+                MONUMENTS
+              </motion.h1>
+              <motion.div 
+                variants={slideUp}
+                className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4"
+              >
+                <Button href="/portfolio">View Our Work</Button>
+                <Button variant="secondary" href="/contact">Start a Project</Button>
+              </motion.div>
+            </div>
+
             <motion.div 
-              variants={slideUp}
-              className="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4"
+               variants={fadeIn} 
+               className="hidden lg:flex justify-end items-center w-full h-full min-h-[500px] relative pointer-events-auto"
             >
-              <Button href="/portfolio">View Our Work</Button>
-              <Button variant="secondary" href="/contact">Start a Project</Button>
+              <div className="w-[600px] max-w-full aspect-square relative">
+                <HeroGraphic />
+              </div>
             </motion.div>
           </div>
         </motion.section>
@@ -51,7 +71,7 @@ export default function Home() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
-          className="px-4 sm:px-6 md:px-8 py-16 md:py-24 lg:py-32"
+          className="px-4 sm:px-6 md:px-8 py-16 md:py-24 lg:py-32 border-b border-outline/20 bg-surface/30 backdrop-blur-md"
         >
           <div className="max-w-[1920px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
@@ -91,7 +111,7 @@ export default function Home() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-50px" }}
-          className="border-t border-outline/20 px-4 sm:px-6 md:px-8 py-16 md:py-24"
+          className="px-4 sm:px-6 md:px-8 py-16 md:py-24"
         >
           <div className="max-w-[1920px] mx-auto">
             <motion.p 
@@ -101,28 +121,42 @@ export default function Home() {
               Selected Work
             </motion.p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-              {[1, 2, 3, 4].map((i) => (
+              {featuredProjects.map((project) => (
                 <Link
-                  key={i}
-                  href="/portfolio"
+                  key={project.title}
+                  href={`/portfolio#${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                   className="block"
                 >
                   <motion.div
                     variants={cinematicReveal}
-                    className="bg-surface border border-outline/20 aspect-[4/3] flex items-center justify-center group hover:bg-surface-container transition-colors duration-500 overflow-hidden"
+                    className="bg-surface border border-outline/20 aspect-[4/3] flex flex-col relative overflow-hidden group hover:bg-surface-container transition-colors duration-500"
                   >
-                    <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-center"
-                    >
-                      <p className="font-display text-2xl md:text-3xl uppercase tracking-tighter">
-                        Project {i}
-                      </p>
-                      <p className="text-sm text-on-surface/50 mt-2 uppercase tracking-wider">
-                        {i % 2 === 0 ? "E-Commerce" : "Corporate"}
-                      </p>
-                    </motion.div>
+                    <div className="relative w-full flex-1 border-b border-outline/20 overflow-hidden bg-background">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} project showcase`}
+                          fill
+                          className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-background/50 text-on-surface/30 uppercase text-sm tracking-widest">
+                          Image Pending
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="p-6 md:p-8 flex justify-between items-end relative z-10 bg-surface w-full">
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-on-surface/50 mb-2">
+                          {project.category} — {project.year}
+                        </p>
+                        <h2 className="font-display text-2xl md:text-3xl uppercase tracking-tighter">
+                          {project.title}
+                        </h2>
+                      </div>
+                    </div>
                   </motion.div>
                 </Link>
               ))}

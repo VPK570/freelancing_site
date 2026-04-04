@@ -3,6 +3,7 @@ import { Space_Grotesk, Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import NoiseOverlay from "@/components/NoiseOverlay";
+import InteractiveBackground from "@/components/InteractiveBackground";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -55,19 +56,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NoiseOverlay />
-          {/* Ambient Background Blobs */}
-          <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-            <div 
-              className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] 
-                         bg-primary/10 rounded-full blur-[120px] animate-pulse"
-              style={{ animationDuration: '8s' }}
-            />
-            <div 
-              className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] 
-                         bg-primary/5 rounded-full blur-[120px] animate-pulse"
-              style={{ animationDuration: '12s', animationDelay: '2s' }}
-            />
-          </div>
+          <InteractiveBackground />
           {children}
         </ThemeProvider>
       </body>
