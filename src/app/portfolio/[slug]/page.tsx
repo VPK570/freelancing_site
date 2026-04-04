@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 interface ShowcasePageProps {
   params: Promise<{ slug: string }>;
@@ -42,13 +44,28 @@ export default async function ShowcasePage({ params }: ShowcasePageProps) {
     .join(" ");
 
   return (
-    <div className="fixed inset-0 z-50 bg-background">
-      <iframe
-        src={`/showcases/${slug}/index.html`}
-        className="w-full h-full border-0"
-        title={`${showcaseName} - Showcase Preview`}
-        sandbox="allow-scripts allow-same-origin allow-forms"
-      />
+    <div className="fixed inset-0 z-50 bg-background flex flex-col">
+      <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-outline/15 bg-background/90 backdrop-blur-sm shrink-0">
+        <Link
+          href="/portfolio"
+          className="flex items-center gap-2 text-sm text-on-surface/60 hover:text-primary transition-colors duration-300"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="hidden sm:inline">Back to Portfolio</span>
+          <span className="sm:hidden">Back</span>
+        </Link>
+        <span className="text-xs uppercase tracking-widest text-on-surface/40 font-medium">
+          {showcaseName}
+        </span>
+      </div>
+      <div className="flex-1 overflow-hidden">
+        <iframe
+          src={`/showcases/${slug}/index.html`}
+          className="w-full h-full border-0"
+          title={`${showcaseName} - Showcase Preview`}
+          sandbox="allow-scripts allow-same-origin allow-forms"
+        />
+      </div>
     </div>
   );
 }

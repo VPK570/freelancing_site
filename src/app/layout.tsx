@@ -1,37 +1,37 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Manrope } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import NoiseOverlay from "@/components/NoiseOverlay";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Studio — Web Design & Development",
-  description: "Websites that command attention. Structural Brutalism meets high-end editorial design.",
+  title: "VPK — Freelance Web Designer & Developer",
+  description: "I build modern, fast websites that help businesses grow online. Based in Chennai, working globally.",
   openGraph: {
-    title: "Studio — Web Design & Development",
-    description: "Websites that command attention. Structural Brutalism meets high-end editorial design.",
+    title: "VPK — Freelance Web Designer & Developer",
+    description: "I build modern, fast websites that help businesses grow online. Based in Chennai, working globally.",
     type: "website",
     locale: "en_US",
-    siteName: "Studio",
+    siteName: "VPK",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio — Web Design & Development",
-    description: "Websites that command attention. Structural Brutalism meets high-end editorial design.",
+    title: "VPK — Freelance Web Designer & Developer",
+    description: "I build modern, fast websites that help businesses grow online. Based in Chennai, working globally.",
   },
 };
 
@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${manrope.variable} antialiased`}
+      className={`${plusJakartaSans.variable} ${inter.variable} antialiased`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
