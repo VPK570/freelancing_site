@@ -1,0 +1,4 @@
+:HL["/showcases/aura-interiors/_next/static/css/c7e09aaa070771b8.css","style"]
+:HL["/showcases/aura-interiors/_next/static/css/2bab21e2bed32700.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"tc46k27ZHPi-aSScOsnAE"}

@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[7121,[],""]
+3:I[4581,[],""]
+:HL["/showcases/ironpeak/_next/static/css/5e193dd63014594d.css","style"]
+:HL["/showcases/ironpeak/_next/static/css/8f3243160f337132.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap","style"]
+0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/showcases/ironpeak/_next/static/css/5e193dd63014594d.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/showcases/ironpeak/_next/static/css/8f3243160f337132.css","precedence":"next"}]],["$","html",null,{"lang":"en","className":"__variable_48f6a4 __variable_202839 __variable_5d6076","children":[["$","head",null,{"children":["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap","rel":"stylesheet"}]}],["$","body",null,{"className":"bg-background text-on-surface font-body antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"0vh_y1Xe8EmW77UjjwyIw"}

@@ -1,6 +1,7 @@
 # AGENTS.md
 
 ## Project Overview
+
 Freelance portfolio website for a creative web design agency. Built with **Next.js 16 + TypeScript + Tailwind CSS v4**. Design system: **"The Monolith"** — Structural Brutalism meets high-end editorial design with saffron accent (`#FF5E00`).
 
 ---
@@ -11,11 +12,16 @@ Freelance portfolio website for a creative web design agency. Built with **Next.
 # Development
 npm run dev          # Start dev server at localhost:3000 (Turbopack)
 npm run build        # Production build
-npm run start        # Start production server
+npm start            # Start production server
 
 # Linting & Type Checking
 npm run lint         # Run ESLint on src/
 npm run typecheck    # TypeScript type check (no emit)
+
+# If tests are added (Vitest):
+npm test             # Run all tests
+npm test -- src/path # Run single test file
+npm test -- --watch  # Watch mode
 ```
 
 **No test framework configured yet.** To add Vitest:
@@ -69,10 +75,10 @@ src/
 - **Responsive sizing**: Use `clamp()` (e.g., `clamp(2.5rem, 10vw, 10rem)`)
 
 ### Golden Rules
-- **NO border-radius** — all corners are 90 degrees (enforced in globals.css)
+- **NO border-radius** — all corners are 90 degrees (enforced globally)
 - **NO shadows** — depth via tonal surface shifts
 - **1px hairlines only** for structural borders (use `border-outline/20`)
-- **Easing**: `cubic-bezier(0.16, 1, 0.3, 1)` (ExpoOut)
+- **Easing**: `cubic-bezier(0.16, 1, 0.3, 1)` (cinematic/expert)
 - **Noise overlay**: 2-3% opacity SVG grain texture
 
 ---
@@ -80,28 +86,54 @@ src/
 ## Code Style
 
 ### TypeScript
-- Strict mode enabled (`strict: true`)
-- Use explicit types; **never use `any`**
+- Strict mode enabled (`strict: true` in tsconfig.json)
+- **Never use `any`** — use `unknown` when type is truly unknown
 - Prefer `interface` for object shapes, `type` for unions/primitives
 - Props interfaces defined above component
+- Use explicit return types on public functions
 
 ### Components
-- Server components by default; use `'use client'` only when needed (hooks, state, events)
-- PascalCase for component names and files
-- Define props interface above component
-- Use `@/` path alias for imports (e.g., `@/components/Button`)
+- **Server components by default** — use `'use client'` only when needed
+- Use `'use client'` for: hooks, state (useState), events, browser APIs
+- Props interfaces always defined above component
+- Destructure props in function signature: `function Button({ label, variant }: ButtonProps)`
 
 ### File Naming
 - Components: `PascalCase.tsx` (e.g., `Navigation.tsx`)
 - Pages: `page.tsx` (App Router convention)
 - Utils/lib: `camelCase.ts` (e.g., `design-system.ts`)
 
-### Tailwind CSS v4
-- Use CSS theme tokens (`--color-*`, `--font-*`) defined in `globals.css`
-- Use responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+### Imports
+Order imports strictly:
+1. Next.js imports (`next/image`, `next/font`, etc.)
+2. React imports (`react`, `react-dom`)
+3. Third-party libraries (`lucide-react`, `framer-motion`)
+4. `@/` imports (components, lib, app pages)
+5. Relative imports (`./`, `../`)
+6. Type imports (`import type { X }`)
+
+```typescript
+import Image from 'next/image';
+import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/Button';
+import { easings } from '@/lib/design-system';
+import type { PageProps } from './types';
+```
+
+### JSX/React
+- Always use `className` — never `class`
+- Use `htmlFor` — never `for` attribute
+- Self-close tags when no children: `<Component />`
+- Prefer fragment `<>...</>` over `<div>` for wrapper elements
+
+### CSS/Tailwind v4
+- Use CSS theme tokens: `--color-*`, `--font-*` from `globals.css`
+- Responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
 - Hairline borders: `border border-outline/20`
-- NO arbitrary values unless absolutely necessary
-- Custom utilities in `globals.css` (e.g., `.animate-marquee`)
+- NO arbitrary values (`[...]`) unless absolutely necessary
+- Custom animations in `globals.css` using `@keyframes`
+- Custom utilities in `globals.css` (kebab-case classes)
 
 ### CSS Classes
 - Tailwind: lowercase with hyphens (`text-primary`, `font-display`)
@@ -112,7 +144,14 @@ src/
 ### Error Handling
 - Use Next.js error boundaries (`error.tsx`, `not-found.tsx`) for route-level errors
 - Form validation: HTML5 `required` attributes + server-side validation
-- No silent failures — log errors and show user-facing messages
+- **No silent failures** — log errors and show user-facing messages
+- Use `try/catch` with explicit error types
+- Return proper error states from async functions
+
+### Hooks
+- Custom hooks start with `use` (e.g., `useTheme`, `useMediaQuery`)
+- Place custom hooks in `src/lib/hooks/` directory
+- Never call hooks conditionally — always at top level
 
 ---
 
@@ -135,25 +174,20 @@ src/
 
 ## Accessibility
 - Semantic HTML elements (`header`, `nav`, `main`, `footer`, `section`)
-- Visible focus states (never `outline: none` without replacement)
+- Visible focus states (never remove outline without replacement)
 - WCAG AA color contrast
 - Alt text on all images
-- ARIA attributes on interactive elements (mobile menu `aria-expanded`, `aria-label`)
+- ARIA attributes on interactive elements (`aria-expanded`, `aria-label`, etc.)
 - Minimum 44px touch targets
 
 ---
 
 ## Performance
 - Images: `next/image` with proper sizing and `priority` for above-fold
-- Fonts: `next/font` with `display: "swap"` (automatic optimization, zero layout shift)
+- Fonts: `next/font` with `display: "swap"` (automatic optimization)
 - Animations: CSS-only, GPU-accelerated (`transform`, `opacity`)
 - Noise overlay: reduced opacity on mobile (`0.02` vs `0.03`)
 - Image formats: AVIF/WebP preferred
-
----
-
-## Browser Support
-Modern browsers: Chrome, Firefox, Safari, Edge (last 2 versions).
 
 ---
 
@@ -169,4 +203,4 @@ Modern browsers: Chrome, Firefox, Safari, Edge (last 2 versions).
 1. Create `src/components/ComponentName.tsx`
 2. Define props interface above component
 3. Use `'use client'` only if using hooks/state/events
-4. Follow design system rules (no radius, hairline borders, etc.)
+4. Follow design system rules (no radius, hairline borders)

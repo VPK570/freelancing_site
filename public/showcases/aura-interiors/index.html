@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Interiors — Heritage Modern Interiors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES
+       ============================================ */
+    :root {
+      --color-primary: #765a00;
+      --color-surface: #fcf9f0;
+      --color-surface-container: #f1eee5;
+      --color-on-surface: #1c1c17;
+      --color-accent: #de835a;
+      --color-white: #fff;
+      --color-black: #000;
+      --font-display: 'Noto Serif', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 4rem;
+      --spacing-xl: 6rem;
+      --spacing-2xl: 8rem;
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --max-width: 1400px;
+    }
+
+    /* ============================================
+       BASE RESET & GLOBAL STYLES
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--color-on-surface);
+      background-color: var(--color-surface);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    a:hover {
+      color: var(--color-primary);
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: rgba(252, 249, 240, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-surface-container);
+    }
+
+    .nav-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: var(--spacing-md);
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-primary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-xl);
+      background: var(--color-surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      right: -5%;
+      width: 40vw;
+      height: 40vw;
+      max-width: 600px;
+      max-height: 600px;
+      background: radial-gradient(circle, var(--color-surface-container) 0%, transparent 70%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      width: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      color: var(--color-on-surface);
+      opacity: 0.8;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hero-accent-line {
+      width: 80px;
+      height: 2px;
+      background: var(--color-primary);
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: var(--color-primary);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .hero-cta:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      color: var(--color-white);
+    }
+
+    /* ============================================
+       PORTFOLIO GALLERY
+       ============================================ */
+    .portfolio {
+      padding: var(--spacing-xl) var(--spacing-md);
+      background: var(--color-surface-container);
+    }
+
+    .section-header {
+      max-width: var(--max-width);
+      margin: 0 auto var(--spacing-lg);
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .gallery-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .project-card {
+      background: var(--color-surface);
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(28, 28, 23, 0.08);
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-card:nth-child(1) .project-image {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+      aspect-ratio: 3/4;
+    }
+
+    .project-card:nth-child(2) .project-image {
+      background: linear-gradient(180deg, var(--color-surface-container) 0%, var(--color-accent) 100%);
+    }
+
+    .project-card:nth-child(3) .project-image {
+      background: linear-gradient(45deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    }
+
+    .project-card:nth-child(4) .project-image {
+      background: linear-gradient(225deg, var(--color-primary) 0%, var(--color-surface-container) 100%);
+      aspect-ratio: 3/4;
+    }
+
+    .project-info {
+      padding: var(--spacing-sm);
+    }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-category {
+      font-size: 0.875rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================
+       THE CRAFT SECTION
+       ============================================ */
+    .craft {
+      padding: var(--spacing-xl) var(--spacing-md);
+      background: var(--color-surface);
+    }
+
+    .craft-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .craft-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .craft-description {
+      font-size: 1rem;
+      line-height: 1.7;
+      opacity: 0.85;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .service-card {
+      padding: var(--spacing-md);
+      background: var(--color-surface-container);
+      border-left: 2px solid var(--color-primary);
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover {
+      border-left-color: var(--color-accent);
+      background: var(--color-white);
+    }
+
+    .service-icon {
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-xs);
+      display: block;
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    /* ============================================
+       ABOUT SECTION
+       ============================================ */
+    .about {
+      padding: var(--spacing-xl) var(--spacing-md);
+      background: var(--color-surface-container);
+    }
+
+    .about-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      align-items: center;
+    }
+
+    .about-portrait {
+      width: 240px;
+      height: 240px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--color-accent), var(--color-primary) 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-portrait::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 100%);
+    }
+
+    .about-content {
+      text-align: center;
+    }
+
+    .about-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .about-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .about-bio {
+      font-size: 1rem;
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    /* ============================================
+       FOOTER / CONTACT
+       ============================================ */
+    .site-footer {
+      padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+      background: var(--color-on-surface);
+      color: var(--color-surface);
+    }
+
+    .footer-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .footer-tagline {
+      font-size: 0.875rem;
+      opacity: 0.7;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+      font-size: 0.875rem;
+    }
+
+    .footer-contact a:hover {
+      color: var(--color-primary);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-sm);
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(252, 249, 240, 0.2);
+      border-radius: 50%;
+      transition: var(--transition-smooth);
+    }
+
+    .social-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .footer-bottom {
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-sm);
+      border-top: 1px solid rgba(252, 249, 240, 0.1);
+      text-align: center;
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       RESPONSIVE BREAKPOINTS
+       ============================================ */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .craft-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-container {
+        grid-template-columns: auto 1fr;
+        gap: var(--spacing-xl);
+      }
+
+      .about-content {
+        text-align: left;
+      }
+
+      .about-portrait {
+        width: 300px;
+        height: 300px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: left;
+      }
+
+      .footer-brand,
+      .footer-tagline,
+      .footer-social {
+        text-align: left;
+        justify-content: flex-start;
+      }
+
+      .footer-contact {
+        align-items: flex-start;
+      }
+
+      .footer-bottom {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="#" class="logo">AURA</a>
+      <ul class="nav-links">
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#craft">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1 class="hero-title">Heritage Modern<br>Interiors</h1>
+        <div class="hero-accent-line"></div>
+        <p class="hero-subtitle">We Design Spaces That Tell Your Story</p>
+        <a href="#portfolio" class="hero-cta">View Our Manor</a>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PORTFOLIO GALLERY
+         ============================================ -->
+    <section class="portfolio" id="portfolio">
+      <div class="section-header">
+        <p class="section-label">Selected Works</p>
+        <h2 class="section-title">Portfolio</h2>
+      </div>
+      <div class="gallery-grid">
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-info">
+            <h3 class="project-name">The Nair Residence</h3>
+            <p class="project-category">Residential</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-info">
+            <h3 class="project-name">Kochi Heritage Hotel</h3>
+            <p class="project-category">Hospitality</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-info">
+            <h3 class="project-name">Malabar Office Suite</h3>
+            <p class="project-category">Commercial</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image"></div>
+          <div class="project-info">
+            <h3 class="project-name">Tranquil Villa</h3>
+            <p class="project-category">Residential</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE CRAFT SECTION
+         ============================================ -->
+    <section class="craft" id="craft">
+      <div class="craft-container">
+        <div class="craft-text">
+          <p class="section-label">What We Do</p>
+          <h2 class="craft-heading">Our Expertise</h2>
+          <p class="craft-description">
+            From heritage homes to contemporary workspaces, we craft environments that honor tradition while embracing modern living. Every project begins with listening — understanding your story, your rituals, and the way you inhabit space.
+          </p>
+          <p class="craft-description">
+            Our approach blends Kerala's architectural legacy with global design sensibilities, creating interiors that feel both timeless and distinctly yours.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-icon">🏠</span>
+            <h3 class="service-title">Residential Design</h3>
+            <p class="service-desc">Full-service interior design for homes, villas, and apartments — from concept to completion.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">🏢</span>
+            <h3 class="service-title">Commercial Spaces</h3>
+            <p class="service-desc">Offices, boutiques, and hospitality venues designed for function and aesthetic impact.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon">🎨</span>
+            <h3 class="service-title">Art & Curation</h3>
+            <p class="service-desc">Bespoke art selection, antique sourcing, and curated collections that elevate your space.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         ABOUT SECTION
+         ============================================ -->
+    <section class="about" id="about">
+      <div class="about-container">
+        <div class="about-portrait"></div>
+        <div class="about-content">
+          <p class="about-label">The Designer</p>
+          <h2 class="about-title">Curated by Meera Nair</h2>
+          <p class="about-bio">
+            Meera Nair founded Aura Interiors with a singular vision: to create spaces that breathe with the soul of their inhabitants. Trained at NID Ahmedabad and with over a decade of practice across India and Southeast Asia, Meera brings a rare sensitivity to material, light, and memory.
+          </p>
+          <p class="about-bio" style="margin-top: 1rem;">
+            Her philosophy is rooted in the belief that great design is invisible — it doesn't announce itself, but rather makes you feel exactly where you are meant to be. Every Aura project carries this quiet confidence, this sense of belonging.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       FOOTER / CONTACT
+       ============================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+      <div>
+        <p class="footer-brand">AURA</p>
+        <p class="footer-tagline">Heritage Modern Interiors</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="social-link" aria-label="Pinterest">PI</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:hello@aurainteriors.in">hello@aurainteriors.in</a>
+        <a href="tel:+919876543210">+91 98765 43210</a>
+        <span>42, Heritage Lane, Panampilly Nagar<br>Kochi, Kerala 682036</span>
+      </div>
+      <div class="footer-contact">
+        <p style="font-weight: 500; margin-bottom: 0.5rem;">Studio Hours</p>
+        <span>Mon — Fri: 10:00 AM — 6:00 PM</span>
+        <span>Saturday: By Appointment</span>
+        <span>Sunday: Closed</span>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura Interiors. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

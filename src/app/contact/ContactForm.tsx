@@ -1,26 +1,38 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitContactForm, FormState } from "./actions";
+
+import { useActionState, useState } from "react";
+import { submitContactForm } from "./actions";
+ main
 import Button from "@/components/Button";
+import { Check } from "lucide-react";
 
 const initialState: FormState = {
   success: false,
   message: "",
 };
 
+const projectTypes = [
+  { value: "web-design", label: "Web Design" },
+  { value: "development", label: "Development" },
+  { value: "branding", label: "Branding" },
+  { value: "strategy", label: "Strategy" },
+];
+
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContactForm, initialState);
+  const [selectedProject, setSelectedProject] = useState("");
 
   if (state.success) {
     return (
-      <div className="bg-surface-container border border-primary/20 p-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <h3 className="font-display text-2xl uppercase tracking-tighter mb-4 text-primary">
+      <div className="bg-surface-container border border-primary/20 p-8 text-center">
+        <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-4">
+          <Check className="w-6 h-6 text-primary" strokeWidth={2} />
+        </div>
+        <h3 className="font-display text-2xl font-semibold tracking-tight mb-3 text-primary">
           Message Received
         </h3>
-        <p className="text-on-surface/70 leading-relaxed">
-          {state.message}
-        </p>
+        <p className="text-on-surface/60 leading-relaxed">{state.message}</p>
       </div>
     );
   }
@@ -36,7 +48,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="block text-xs uppercase tracking-widest text-on-surface/50 mb-3"
+          className="block text-xs uppercase tracking-widest text-on-surface/50 mb-3 font-medium"
         >
           Name
         </label>
@@ -45,7 +57,9 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
-          className={`w-full bg-transparent border-b py-3 text-lg focus:outline-none transition-colors duration-300 ${state.errors?.name ? 'border-red-500 focus:border-red-500' : 'border-outline/20 focus:border-primary'}`}
+
+          className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 placeholder:text-on-surface/25"
+ main
           placeholder="Your name"
         />
         {state.errors?.name && (
@@ -55,7 +69,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-xs uppercase tracking-widest text-on-surface/50 mb-3"
+          className="block text-xs uppercase tracking-widest text-on-surface/50 mb-3 font-medium"
         >
           Email
         </label>
@@ -64,7 +78,9 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
-          className={`w-full bg-transparent border-b py-3 text-lg focus:outline-none transition-colors duration-300 ${state.errors?.email ? 'border-red-500 focus:border-red-500' : 'border-outline/20 focus:border-primary'}`}
+
+          className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 placeholder:text-on-surface/25"
+         main
           placeholder="your@email.com"
         />
         {state.errors?.email && (
@@ -72,31 +88,36 @@ export default function ContactForm() {
         )}
       </div>
       <div>
-        <label
-          htmlFor="project"
-          className="block text-xs uppercase tracking-widest text-on-surface/50 mb-3"
-        >
+        <label className="block text-xs uppercase tracking-widest text-on-surface/50 mb-4 font-medium">
           Project Type
         </label>
-        <select
-          id="project"
-          name="project"
-          className={`w-full bg-transparent border-b py-3 text-lg focus:outline-none transition-colors duration-300 appearance-none pointer-events-auto ${state.errors?.project ? 'border-red-500 focus:border-red-500' : 'border-outline/20 focus:border-primary'}`}
-        >
-          <option value="" className="bg-surface">Select a service</option>
-          <option value="web-design" className="bg-surface">Web Design</option>
-          <option value="development" className="bg-surface">Development</option>
-          <option value="branding" className="bg-surface">Branding</option>
-          <option value="strategy" className="bg-surface">Strategy</option>
-        </select>
-        {state.errors?.project && (
-          <p className="text-red-500 text-xs mt-2">{state.errors.project[0]}</p>
-        )}
+
+        <div className="flex flex-wrap gap-2">
+          {projectTypes.map((type) => {
+            const isSelected = selectedProject === type.value;
+            return (
+              <button
+                key={type.value}
+                type="button"
+                onClick={() => setSelectedProject(type.value)}
+                className={`px-4 py-2.5 text-sm border transition-all duration-300 cursor-pointer ${
+                  isSelected
+                    ? "bg-primary text-white border-primary"
+                    : "bg-transparent text-on-surface/60 border-outline/20 hover:border-primary/40 hover:text-primary"
+                }`}
+              >
+                {type.label}
+              </button>
+            );
+          })}
+        </div>
+        <input type="hidden" name="project" value={selectedProject} />
+         main
       </div>
       <div>
         <label
           htmlFor="message"
-          className="block text-xs uppercase tracking-widest text-on-surface/50 mb-3"
+          className="block text-xs uppercase tracking-widest text-on-surface/50 mb-3 font-medium"
         >
           Message
         </label>
@@ -105,7 +126,9 @@ export default function ContactForm() {
           name="message"
           rows={4}
           required
-          className={`w-full bg-transparent border-b py-3 text-lg focus:outline-none transition-colors duration-300 resize-none ${state.errors?.message ? 'border-red-500 focus:border-red-500' : 'border-outline/20 focus:border-primary'}`}
+
+          className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 resize-none placeholder:text-on-surface/25"
+ main
           placeholder="Tell us about your project..."
         />
         {state.errors?.message && (

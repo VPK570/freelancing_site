@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmileCare Dental Clinic — Chennai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES
+       ============================================ */
+    :root {
+      --primary: #006565;
+      --primary-fixed: #d1f2f2;
+      --primary-10: rgba(0, 101, 101, 0.1);
+      --primary-5: rgba(0, 101, 101, 0.05);
+      --surface: #ffffff;
+      --surface-container: #f0f7f7;
+      --on-surface: #1a1a2e;
+      --on-surface-variant: #4a4a6a;
+      --cyan-accent: #93f2f2;
+      --white: #ffffff;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--on-surface);
+      background: var(--surface);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--on-surface);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--on-surface-variant);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: #004d4d;
+      border-color: #004d4d;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-10);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--primary);
+      border-color: var(--white);
+    }
+
+    .btn-white:hover {
+      background: var(--primary-fixed);
+      border-color: var(--primary-fixed);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--primary-10);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .logo svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--on-surface-variant);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--on-surface);
+    }
+
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--primary-10);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 0.875rem 0;
+      font-weight: 500;
+      color: var(--on-surface-variant);
+      border-bottom: 1px solid var(--primary-5);
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-nav .btn {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      padding-top: 10rem;
+      padding-bottom: 5rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--surface-container) 0%, var(--surface) 100%);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      background: var(--primary-fixed);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--on-surface);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--on-surface-variant);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .trust-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 1.25rem;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--primary-10);
+    }
+
+    .trust-badge-value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .trust-badge-label {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* ============================================
+       SERVICES
+       ============================================ */
+    .services {
+      background: var(--surface);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--primary-5);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-10);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-fixed);
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.25rem;
+    }
+
+    .service-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--primary);
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--on-surface);
+    }
+
+    .service-card p {
+      color: var(--on-surface-variant);
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+
+    .service-link {
+      font-weight: 600;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .service-link:hover {
+      gap: 0.625rem;
+    }
+
+    .service-link svg {
+      width: 16px;
+      height: 16px;
+      transition: var(--transition);
+    }
+
+    /* ============================================
+       ABOUT
+       ============================================ */
+    .about {
+      background: var(--surface-container);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .about-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--on-surface);
+    }
+
+    .about-content p {
+      color: var(--on-surface-variant);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .about-feature {
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .about-feature:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(4px);
+    }
+
+    .about-feature-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-fixed);
+      border-radius: var(--radius-sm);
+    }
+
+    .about-feature-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+    }
+
+    .about-feature h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--on-surface);
+    }
+
+    .about-feature p {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      margin-bottom: 0;
+    }
+
+    /* ============================================
+       TEAM
+       ============================================ */
+    .team {
+      background: var(--surface);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--primary-5);
+      transition: var(--transition);
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .team-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 1.25rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--cyan-accent) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .team-avatar svg {
+      width: 48px;
+      height: 48px;
+      color: var(--white);
+    }
+
+    .team-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--on-surface);
+    }
+
+    .team-specialty {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-experience {
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+    }
+
+    /* ============================================
+       REVIEWS
+       ============================================ */
+    .reviews {
+      background: var(--surface-container);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--primary-10);
+      transition: var(--transition);
+    }
+
+    .review-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .review-stars svg {
+      width: 20px;
+      height: 20px;
+      color: #fbbf24;
+    }
+
+    .review-text {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--on-surface);
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-weight: 600;
+      color: var(--on-surface);
+    }
+
+    .review-date {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* ============================================
+       BOOKING CTA
+       ============================================ */
+    .booking-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, #004d4d 100%);
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .booking-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .booking-cta p {
+      font-size: 1.125rem;
+      color: var(--primary-fixed);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--on-surface);
+      color: var(--primary-fixed);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      color: var(--on-surface-variant);
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .footer h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      font-size: 1.125rem;
+    }
+
+    .footer-links a {
+      display: block;
+      padding: 0.375rem 0;
+      color: var(--on-surface-variant);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-fixed);
+      padding-left: 0.5rem;
+    }
+
+    .footer-contact li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.875rem;
+      color: var(--on-surface-variant);
+    }
+
+    .footer-contact svg {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      color: var(--primary-fixed);
+      margin-top: 0.125rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      text-align: center;
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+    }
+
+    /* ============================================
+       RESPONSIVE: TABLET (768px+)
+       ============================================ */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+      }
+
+      .hero-ctas {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .trust-badges {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE: DESKTOP (1024px+)
+       ============================================ */
+    @media (min-width: 1024px) {
+      .section {
+        padding: 6rem 0;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1.25fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <header class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C9.5 2 7.5 3.5 7 6c-.5 2.5-.5 5 1 7s2.5 4 2.5 6.5c0 1.5.5 2.5 1.5 2.5s1.5-1 1.5-2.5c0-2.5 1-4.5 2.5-6.5s1.5-4.5 1-7c-.5-2.5-2.5-4-5-4z"/>
+        </svg>
+        SmileCare
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#booking" class="btn btn-primary nav-cta">Book Appointment</a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+      <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+      <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+      <a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+      <a href="#booking" class="btn btn-primary" onclick="this.parentElement.classList.remove('active')">Book Appointment</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-eyebrow">Welcome to Premium Dental Care</span>
+        <h1 class="hero-title">Your Smile Deserves<br>the <span>Best Care</span></h1>
+        <p class="hero-subtitle">Experience world-class dentistry in the heart of Chennai. Our team of specialists combines cutting-edge technology with gentle, personalized care for the whole family.</p>
+        <div class="hero-ctas">
+          <a href="#booking" class="btn btn-primary">Book an Appointment</a>
+          <a href="#services" class="btn btn-outline">Explore Services</a>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <span class="trust-badge-value">4.9★</span>
+            <span class="trust-badge-label">Patient Rating</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-badge-value">10+</span>
+            <span class="trust-badge-label">Years Experience</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-badge-value">8000+</span>
+            <span class="trust-badge-label">Happy Patients</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-badge-value">100%</span>
+            <span class="trust-badge-label">Modern Equipment</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SERVICES
+         ============================================ -->
+    <section id="services" class="section services">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive dental care tailored to your needs, from routine checkups to advanced cosmetic procedures.</p>
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3>Teeth Cleaning</h3>
+            <p>Professional cleaning to remove plaque, tartar, and stains. Keep your smile bright and your gums healthy with regular visits.</p>
+            <a href="#" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+              </svg>
+            </div>
+            <h3>Teeth Whitening</h3>
+            <p>Safe, effective whitening treatments that can brighten your smile by several shades in just one visit.</p>
+            <a href="#" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C9.5 2 7.5 3.5 7 6c-.5 2.5-.5 5 1 7s2.5 4 2.5 6.5c0 1.5.5 2.5 1.5 2.5s1.5-1 1.5-2.5c0-2.5 1-4.5 2.5-6.5s1.5-4.5 1-7c-.5-2.5-2.5-4-5-4z"/>
+              </svg>
+            </div>
+            <h3>Dental Implants</h3>
+            <p>Permanent, natural-looking tooth replacements that restore your smile and confidence with long-lasting results.</p>
+            <a href="#" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4"/>
+                <path d="M12 18v4"/>
+                <path d="M4.93 4.93l2.83 2.83"/>
+                <path d="M16.24 16.24l2.83 2.83"/>
+                <path d="M2 12h4"/>
+                <path d="M18 12h4"/>
+                <path d="M4.93 19.07l2.83-2.83"/>
+                <path d="M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <h3>Root Canal</h3>
+            <p>Pain-free root canal therapy using modern techniques to save damaged teeth and relieve discomfort.</p>
+            <a href="#" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18"/>
+                <path d="M9 21V9"/>
+              </svg>
+            </div>
+            <h3>Orthodontics</h3>
+            <p>Straighten your smile with modern braces and clear aligners. Customized treatment plans for all ages.</p>
+            <a href="#" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3>Cosmetic Dentistry</h3>
+            <p>Veneers, bonding, and smile makeovers designed to give you the confident, beautiful smile you've always wanted.</p>
+            <a href="#" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         ABOUT
+         ============================================ -->
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <h2>Experience the Difference</h2>
+            <p>At SmileCare, we believe that great dental care goes beyond just treating teeth. Our approach combines clinical excellence with genuine hospitality, ensuring every visit is comfortable and stress-free.</p>
+            <p>Founded in 2014, we've grown from a single-chair practice to one of Chennai's most trusted dental clinics, serving thousands of patients with care, compassion, and cutting-edge technology.</p>
+            <a href="#booking" class="btn btn-primary">Schedule a Visit</a>
+          </div>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <path d="M8 21h8"/>
+                  <path d="M12 17v4"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Modern Equipment</h4>
+                <p>Digital X-rays, 3D imaging, and laser dentistry for precise, comfortable treatments.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Expert Dentists</h4>
+                <p>Board-certified specialists with decades of combined experience in all dental fields.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Comfortable Environment</h4>
+                <p>Relaxing clinic ambiance with entertainment options and gentle, anxiety-free care.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         TEAM
+         ============================================ -->
+    <section class="section team">
+      <div class="container">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-subtitle">Our experienced dental professionals are dedicated to providing you with the highest quality care.</p>
+        <div class="team-grid">
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+              </svg>
+            </div>
+            <h3>Dr. Priya Sharma</h3>
+            <p class="team-specialty">General &amp; Cosmetic Dentistry</p>
+            <p class="team-experience">12 years experience</p>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+              </svg>
+            </div>
+            <h3>Dr. Arun Krishnan</h3>
+            <p class="team-specialty">Implantology &amp; Oral Surgery</p>
+            <p class="team-experience">15 years experience</p>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+              </svg>
+            </div>
+            <h3>Dr. Meena Rajesh</h3>
+            <p class="team-specialty">Orthodontics &amp; Aligners</p>
+            <p class="team-experience">10 years experience</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         REVIEWS
+         ============================================ -->
+    <section id="reviews" class="section reviews">
+      <div class="container">
+        <h2 class="section-title">What Our Patients Say</h2>
+        <p class="section-subtitle">Real stories from real patients who trust us with their smiles.</p>
+        <div class="reviews-grid">
+
+          <div class="review-card">
+            <div class="review-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="review-text">"I was terrified of dentists until I visited SmileCare. Dr. Priya was so gentle and patient. The clinic feels more like a spa than a dental office. Highly recommend!"</p>
+            <p class="review-author">Lakshmi N.</p>
+            <p class="review-date">Patient since 2021</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="review-text">"Got my dental implants done here and the results are amazing. Dr. Arun explained every step and the procedure was completely painless. Worth every rupee!"</p>
+            <p class="review-author">Rajesh K.</p>
+            <p class="review-date">Patient since 2020</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="review-text">"My kids actually look forward to their dental visits now! The staff is wonderful with children and the clinic has a great play area. Best family dentist in Chennai."</p>
+            <p class="review-author">Anitha M.</p>
+            <p class="review-date">Patient since 2019</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         BOOKING CTA
+         ============================================ -->
+    <section id="booking" class="booking-cta">
+      <div class="container">
+        <h2>Ready for a Healthier Smile?</h2>
+        <p>Book your appointment today and take the first step towards better dental health.</p>
+        <a href="#contact" class="btn btn-white">Book Now</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C9.5 2 7.5 3.5 7 6c-.5 2.5-.5 5 1 7s2.5 4 2.5 6.5c0 1.5.5 2.5 1.5 2.5s1.5-1 1.5-2.5c0-2.5 1-4.5 2.5-6.5s1.5-4.5 1-7c-.5-2.5-2.5-4-5-4z"/>
+            </svg>
+            SmileCare
+          </a>
+          <p>Providing exceptional dental care to the Chennai community since 2014. Your smile is our passion.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#services">Services</a>
+          <a href="#about">About Us</a>
+          <a href="#reviews">Patient Reviews</a>
+          <a href="#booking">Book Appointment</a>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>+91 44 2833 4567</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <span>info@smilecarechennai.com</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>42, Anna Salai, T. Nagar,<br>Chennai - 600017</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Mon - Sat: 9:00 AM - 7:00 PM<br>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SmileCare Dental Clinic. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

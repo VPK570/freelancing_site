@@ -13,7 +13,6 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
@@ -21,16 +20,14 @@ export default function Error({
     <>
       <Navigation />
       <main className="flex-1 flex flex-col items-center justify-center min-h-[70vh] px-4 text-center">
-        <h2 
-          className="font-display uppercase tracking-tighter leading-[0.8] mb-8 text-primary"
+        <h2
+          className="font-display tracking-tight leading-[0.8] mb-6 text-primary"
           style={{ fontSize: "clamp(3rem, 10vw, 8rem)" }}
         >
-          SYSTEM
-          <br />
-          FAULT
+          Error
         </h2>
-        <p className="text-xl uppercase tracking-widest text-on-surface/50 mb-12 max-w-md mx-auto">
-          An unexpected error has occurred. Our structural integrity has been compromised.
+        <p className="text-lg md:text-xl text-on-surface/50 mb-10 max-w-md mx-auto leading-relaxed">
+          Something went wrong. Please try again or return to the homepage.
         </p>
         <div className="flex gap-4">
           <Button onClick={() => reset()}>Try Again</Button>

@@ -1,21 +1,62 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import {
+  AuraInteriorsThumbnail,
+  CoolFixWebThumbnail,
+  IronPeakThumbnail,
+  KallakuriKitchenThumbnail,
+  SmileCareThumbnail,
+} from "@/components/ShowcaseThumbnails";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Selected Works",
-  description: "A collection of digital monuments, e-commerce platforms, and corporate identities crafted with intentionality.",
+  title: "Portfolio — VPK",
+  description:
+    "A collection of web projects showcasing design and development work.",
 };
 
 const projects = [
-  { title: "Aurora Finance", category: "E-Commerce", year: "2024", image: "/images/projects/aurora_finance.png" },
-  { title: "Monolith Studios", category: "Corporate", year: "2024", image: "/images/projects/monolith_studios.png" },
-  { title: "Chennai Gallery", category: "Cultural", year: "2025", image: "/images/projects/chennai_gallery.png" },
-  { title: "Vertex Labs", category: "SaaS", year: "2023", image: "/images/projects/vertex_labs.png" },
-  { title: "Terraform Co", category: "E-Commerce", year: "2024", image: "/images/projects/terraform_co.png" },
-  { title: "Pulse Health", category: "Healthcare", year: "2023", image: "/images/projects/pulse_health.png" },
+  {
+    slug: "aura-interiors",
+    title: "Aura Interiors",
+    category: "Interior Design",
+    year: "2024",
+    Thumbnail: AuraInteriorsThumbnail,
+    span: "wide",
+  },
+  {
+    slug: "coolfix-web",
+    title: "CoolFix Web",
+    category: "Technology",
+    year: "2024",
+    Thumbnail: CoolFixWebThumbnail,
+    span: "standard",
+  },
+  {
+    slug: "ironpeak",
+    title: "Iron Peak",
+    category: "Fitness",
+    year: "2024",
+    Thumbnail: IronPeakThumbnail,
+    span: "standard",
+  },
+  {
+    slug: "kallakuri-kitchen",
+    title: "Kallakuri Kitchen",
+    category: "Food & Beverage",
+    year: "2024",
+    Thumbnail: KallakuriKitchenThumbnail,
+    span: "wide",
+  },
+  {
+    slug: "smilecare",
+    title: "SmileCare",
+    category: "Healthcare",
+    year: "2024",
+    Thumbnail: SmileCareThumbnail,
+    span: "standard",
+  },
 ];
 
 export default function PortfolioPage() {
@@ -24,59 +65,61 @@ export default function PortfolioPage() {
       <Navigation />
       <main className="flex-1">
         <section className="px-4 sm:px-6 md:px-8 pt-24 md:pt-32 pb-16">
-          <div className="max-w-[1920px] mx-auto">
-            <p className="text-xs uppercase tracking-widest text-on-surface/50 mb-6">
+          <div className="max-w-[1400px] mx-auto">
+            <p className="text-xs uppercase tracking-widest text-on-surface/50 mb-6 font-medium">
               Portfolio
             </p>
             <h1
-              className="font-display uppercase tracking-tighter leading-[0.85] mb-16 md:mb-24"
-              style={{ fontSize: "clamp(2.5rem, 8vw, 9rem)" }}
+              className="font-display leading-[0.9] tracking-tight max-w-3xl"
+              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
             >
-              SELECTED
-              <br />
-              <span className="text-primary">WORK</span>
+              Selected <span className="text-primary">work</span>
             </h1>
+            <p className="text-lg text-on-surface/60 leading-relaxed max-w-xl mt-4">
+              A collection of websites I&apos;ve designed and built.
+            </p>
+          </div>
+        </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {projects.map((project) => (
-                <Link
-                  key={project.title}
-                  href={`/portfolio#${project.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="group block"
-                >
-                  <div className="bg-surface border border-outline/20 aspect-[4/3] flex flex-col relative overflow-hidden group-hover:bg-surface-container transition-colors duration-500">
-                    <div className="relative w-full flex-1 border-b border-outline/20 overflow-hidden bg-background">
-                      {project.image ? (
-                        <Image
-                          src={project.image}
-                          alt={`${project.title} project showcase`}
-                          fill
-                          className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-background/50 text-on-surface/30 uppercase text-sm tracking-widest">
-                          Image Pending
+        {/* Projects Grid */}
+        <section className="px-4 sm:px-6 md:px-8 pb-16 md:pb-24">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {projects.map((project) => {
+                const Thumbnail = project.Thumbnail;
+                const isWide = project.span === "wide";
+
+                return (
+                  <Link
+                    key={project.slug}
+                    href={`/portfolio/${project.slug}`}
+                    className={isWide ? "md:col-span-2" : ""}
+                  >
+                    <article className="group bg-surface border border-outline/15 overflow-hidden hover:border-primary/40 transition-colors duration-500">
+                      <div
+                        className={`relative overflow-hidden ${isWide ? "aspect-[21/9] md:aspect-[2.5/1]" : "aspect-[4/3]"}`}
+                      >
+                        <div className="absolute inset-0 bg-surface">
+                          <Thumbnail />
                         </div>
-                      )}
-                    </div>
-                    
-                    <div className="p-6 md:p-8 flex justify-between items-end relative z-10 bg-surface">
-                      <div>
-                        <p className="text-xs uppercase tracking-widest text-on-surface/50 mb-2">
-                          {project.category} — {project.year}
-                        </p>
-                        <h2 className="font-display text-2xl md:text-3xl uppercase tracking-tighter">
+                        <div className="absolute inset-0 bg-on-surface/0 group-hover:bg-on-surface/5 transition-colors duration-500" />
+                      </div>
+                      <div className="p-5 md:p-6">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-xs uppercase tracking-widest text-on-surface/40 font-medium">
+                            {project.category}
+                          </span>
+                          <span className="text-xs text-on-surface/20">—</span>
+                          <span className="text-xs text-on-surface/40">{project.year}</span>
+                        </div>
+                        <h2 className="font-display text-lg md:text-xl font-semibold tracking-tight group-hover:text-primary transition-colors duration-300">
                           {project.title}
                         </h2>
                       </div>
-                      <div className="text-xs uppercase tracking-widest text-primary border border-primary/20 px-3 py-1 rounded-none bg-primary/5">
-                        Coming Soon
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                    </article>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
