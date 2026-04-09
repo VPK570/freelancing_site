@@ -95,7 +95,7 @@ export default function Home() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 pb-16"
+          className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-8 pt-24 md:pt-32 pb-16 border-b border-outline/20"
         >
           <div className="max-w-[1400px] mx-auto w-full">
             <motion.p
@@ -142,7 +142,7 @@ export default function Home() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-100px" }}
-          className="px-4 sm:px-6 md:px-8 py-16 md:py-24 lg:py-32"
+          className="px-4 sm:px-6 md:px-8 py-16 md:py-24 lg:py-32 border-b border-outline/20 bg-surface/30 backdrop-blur-md"
         >
           <div className="max-w-[1400px] mx-auto">
             <motion.div variants={slideUp} className="mb-12 md:mb-16">

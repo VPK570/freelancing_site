@@ -1,11 +1,13 @@
 "use client";
 
+
 import { useActionState, useState } from "react";
 import { submitContactForm } from "./actions";
+ main
 import Button from "@/components/Button";
 import { Check } from "lucide-react";
 
-const initialState = {
+const initialState: FormState = {
   success: false,
   message: "",
 };
@@ -37,6 +39,12 @@ export default function ContactForm() {
 
   return (
     <form action={formAction} className="space-y-8">
+      {!state.success && state.message && (
+        <div className="text-red-500 text-sm mb-4">
+          {state.message}
+        </div>
+      )}
+      
       <div>
         <label
           htmlFor="name"
@@ -49,9 +57,14 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
+
           className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 placeholder:text-on-surface/25"
+ main
           placeholder="Your name"
         />
+        {state.errors?.name && (
+          <p className="text-red-500 text-xs mt-2">{state.errors.name[0]}</p>
+        )}
       </div>
       <div>
         <label
@@ -65,14 +78,20 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
+
           className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 placeholder:text-on-surface/25"
+         main
           placeholder="your@email.com"
         />
+        {state.errors?.email && (
+          <p className="text-red-500 text-xs mt-2">{state.errors.email[0]}</p>
+        )}
       </div>
       <div>
         <label className="block text-xs uppercase tracking-widest text-on-surface/50 mb-4 font-medium">
           Project Type
         </label>
+
         <div className="flex flex-wrap gap-2">
           {projectTypes.map((type) => {
             const isSelected = selectedProject === type.value;
@@ -93,6 +112,7 @@ export default function ContactForm() {
           })}
         </div>
         <input type="hidden" name="project" value={selectedProject} />
+         main
       </div>
       <div>
         <label
@@ -106,9 +126,14 @@ export default function ContactForm() {
           name="message"
           rows={4}
           required
+
           className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 resize-none placeholder:text-on-surface/25"
+ main
           placeholder="Tell us about your project..."
         />
+        {state.errors?.message && (
+          <p className="text-red-500 text-xs mt-2">{state.errors.message[0]}</p>
+        )}
       </div>
       <div>
         <Button type="submit" disabled={isPending}>

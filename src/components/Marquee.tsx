@@ -17,12 +17,6 @@ export default function Marquee({ text, speed = 20, direction = "left" }: Marque
           <span className="font-display text-4xl md:text-6xl lg:text-7xl uppercase tracking-tighter text-on-surface/10 px-4">
             {text}
           </span>
-          <span className="font-display text-4xl md:text-6xl lg:text-7xl uppercase tracking-tighter text-on-surface/10 px-4">
-            {text}
-          </span>
-          <span className="font-display text-4xl md:text-6xl lg:text-7xl uppercase tracking-tighter text-on-surface/10 px-4">
-            {text}
-          </span>
         </div>
       </div>
     </div>
