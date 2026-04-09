@@ -78,12 +78,12 @@ export default function HeroGraphic() {
 
             const projectedPoints = points.map((p, idx) => {
                 // Rotate around X
-                let y1 = p.y * Math.cos(rotationX) - p.z * Math.sin(rotationX);
-                let z1 = p.y * Math.sin(rotationX) + p.z * Math.cos(rotationX);
+                const y1 = p.y * Math.cos(rotationX) - p.z * Math.sin(rotationX);
+                const z1 = p.y * Math.sin(rotationX) + p.z * Math.cos(rotationX);
 
                 // Rotate around Y
-                let x2 = p.x * Math.cos(rotationY) + z1 * Math.sin(rotationY);
-                let z2 = -p.x * Math.sin(rotationY) + z1 * Math.cos(rotationY);
+                const x2 = p.x * Math.cos(rotationY) + z1 * Math.sin(rotationY);
+                const z2 = -p.x * Math.sin(rotationY) + z1 * Math.cos(rotationY);
 
                 // True 3D perspective projection
                 const fov = 800; // Field of view

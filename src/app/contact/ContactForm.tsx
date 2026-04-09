@@ -3,7 +3,7 @@
 
 import { useActionState, useState } from "react";
 import { submitContactForm } from "./actions";
- main
+import type { FormState } from "./actions";
 import Button from "@/components/Button";
 import { Check } from "lucide-react";
 
@@ -57,9 +57,7 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
-
           className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 placeholder:text-on-surface/25"
- main
           placeholder="Your name"
         />
         {state.errors?.name && (
@@ -78,9 +76,7 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
-
           className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 placeholder:text-on-surface/25"
-         main
           placeholder="your@email.com"
         />
         {state.errors?.email && (
@@ -112,7 +108,6 @@ export default function ContactForm() {
           })}
         </div>
         <input type="hidden" name="project" value={selectedProject} />
-         main
       </div>
       <div>
         <label
@@ -126,9 +121,7 @@ export default function ContactForm() {
           name="message"
           rows={4}
           required
-
           className="w-full bg-transparent border-b border-outline/20 py-3 text-base focus:border-primary focus:outline-none transition-colors duration-300 resize-none placeholder:text-on-surface/25"
- main
           placeholder="Tell us about your project..."
         />
         {state.errors?.message && (
